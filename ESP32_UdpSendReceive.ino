@@ -1,14 +1,9 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
+#include "wifi_password.h"
 
-/* WiFi network name and password */
-const char * ssid = "IVR_Akihabara_2G";
-const char * pwd = "sakurachankawaii2g";
+//接続先passwordとSSIDは別ヘッダファイルにあるよ↑
 
-// IP address to send UDP data to.
-// it can be ip address of the server or 
-// a network broadcast address
-// here is broadcast address
 const char * udpAddress = "192.168.1.7";
 const int udpPort = 8888;
 
