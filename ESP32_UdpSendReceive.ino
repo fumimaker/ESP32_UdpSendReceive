@@ -17,6 +17,8 @@ portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 volatile uint32_t isrCounter = 0;
 volatile uint32_t lastIsrAt = 0;
 
+volatile uint8_t counter = 0;
+
 void IRAM_ATTR onTimer(){
   // Increment the counter and set the time of ISR
   portENTER_CRITICAL_ISR(&timerMux);
@@ -29,13 +31,16 @@ void IRAM_ATTR onTimer(){
 }
 
 void udpSend(){
+  
   //data will be sent to server
-  uint8_t buffer[50] = "hello world";
-  //send hello world to server
+  uint8_t buffer[50]="Hello World";
+  
   udp.beginPacket(udpAddress, udpPort);
-  udp.write(buffer, 11);
+  udp.write(buffer,12);
   udp.endPacket();
   memset(buffer, 0, 50);
+  
+  counter++;
 }
 
 void setup(){
